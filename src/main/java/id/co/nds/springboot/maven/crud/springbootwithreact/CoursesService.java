@@ -7,22 +7,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CoursesService {
-	public static List<Course> courses = new ArrayList<>();
+	public static List<NewCourse> courses = new ArrayList<>();
 	private static long idCounter  = 0;
 	
-	static {
-		courses.add(new Course(++idCounter,"nds","Learn JNDS Struts"));
-		courses.add(new Course(++idCounter,"nds","Learn JNDS Spring"));
-		courses.add(new Course(++idCounter,"nds","Learn React.js and Angular.js"));
-		courses.add(new Course(++idCounter,"nds","Learn to Escalate to your seniors"));
-	}
+//	static {
+//		courses.add(new NewCourse(++idCounter,"nds","Learn JNDS Struts"));
+//		courses.add(new NewCourse(++idCounter,"nds","Learn JNDS Spring"));
+//		courses.add(new NewCourse(++idCounter,"nds","Learn React.js and Angular.js"));
+//		courses.add(new NewCourse(++idCounter,"nds","Learn to Escalate to your seniors"));
+//	}
 	
-	public List<Course> findAll(){
+	public List<NewCourse> findAll(){
 		return courses;
 	}
 	
-	public Course findById(long id) {
-		for (Course course: courses) {
+	public NewCourse findById(Long id) {
+		for (NewCourse course: courses) {
 			if(course.getId() == id) {
 				return course;
 			}
@@ -30,8 +30,8 @@ public class CoursesService {
 		return null;
 	}
 	
-	public Course deleteById(long id) {
-		Course course = findById(id);
+	public NewCourse deleteById(Long id) {
+		NewCourse course = findById(id);
 				
 		if (course == null) {
 			return null;
@@ -44,7 +44,7 @@ public class CoursesService {
 		return null;
 	}
 	
-	public Course save(Course course) {
+	public NewCourse save(NewCourse course) {
 		idCounter = courses.size();
 		if(course.getId() == -1 || course.getId() == 0) {
 			course.setId(++idCounter);
